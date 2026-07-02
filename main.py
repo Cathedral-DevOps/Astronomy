@@ -1,7 +1,7 @@
 from astroquery.simbad import Simbad
 
-data_list = []
 
+data_list = []
 Simbad.add_some_output_messages = False
 Simbad.add_votable_fields('plx')
 
