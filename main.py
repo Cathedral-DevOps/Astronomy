@@ -5,6 +5,7 @@ data_list = []
 Simbad.add_some_output_messages = False
 Simbad.add_votable_fields('plx')
 
+# FETCH FUNCTION
 
 def fetch_distance(star_name):
     print(f"-------Fetching distance for {star_name} from Simbad...-------")
@@ -21,7 +22,10 @@ def fetch_distance(star_name):
         distance_ly = distance_pc * 3.26156
         print(f"Distance to {star_name}: {distance_pc:.2f} parsecs ({distance_ly:.2f} light-years)")
     return distance_pc, distance_ly
-        
+
+
+# BASE SET OF STARS
+
 distance_pc, distance_ly = fetch_distance("Proxima Centauri")
 distance_pc_2, distance_ly_2 = fetch_distance("Sirius")
 distance_pc_3, distance_ly_3 = fetch_distance("HD 140283")
@@ -29,12 +33,15 @@ distance_pc_3, distance_ly_3 = fetch_distance("HD 140283")
 data_list.append(f"Proxima Centauri: {distance_ly:.2f} light-years ({distance_pc:.2f} parsecs)")
 data_list.append(f"Sirius: {distance_ly_2:.2f} light-years ({distance_pc_2:.2f} parsecs)")
 data_list.append(f"HD 140283: {distance_ly_3:.2f} light-years ({distance_pc_3:.2f} parsecs)")
+
 print("-------PRINTING BASE SET DATA-------")
 print(data_list[0], data_list[1], data_list[2], sep="\n")
 
 print("-------Would you like to search for another star? (y/n)-------")
 choice = input(str("Enter your choice: "))
+
 if choice == "y":
+    
     star_name_option = input(str("Enter the name of the star: "))
     print(f"-------Fetching distance for {star_name_option} from Simbad...-------")
     distance_pc_option, distance_ly_option = fetch_distance(star_name_option)
@@ -44,6 +51,7 @@ if choice == "y":
     print("__________________________________________")
     print("-------Would you like to append this data to the list? (y/n)-------")
     append_choice = input(str("Enter your choice: "))
+    
     if append_choice == "y":
         data_list.append(f"{star_name_option}: {distance_ly_option:.2f} light-years ({distance_pc_option:.2f} parsecs)")
         print("-------Data appended successfully!-------")
@@ -54,10 +62,6 @@ if choice == "y":
         
         print("__________________________________________")
         print("-------Exiting the program. Goodbye!-------")
-
-
-        
-
 elif choice == "n":
     print("-------Exiting the program. Goodbye!-------")
 
